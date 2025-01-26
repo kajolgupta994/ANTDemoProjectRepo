@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AntDemoProject" default="compile" basedir=".">
+    
+    <!-- Set properties -->
+    <property name="src.dir" value="src"/>
+    <property name="bin.dir" value="bin"/>
+    
+    <!-- Target to clean the project -->
+    <target name="clean">
+        <delete dir="${bin.dir}"/>
+    </target>
+    
+    <!-- Target to compile the project -->
+    <target name="compile">
+        <mkdir dir="${bin.dir}"/>
+        <javac srcdir="${src.dir}" destdir="${bin.dir}" includeantruntime="false"/>
+    </target>
+    
+    <!-- Target to run the project -->
+    <target name="run" depends="compile">
+        <java classname="com.example.Main" fork="true">
+            <classpath>
+                <pathelement location="${bin.dir}"/>
+            </classpath>
+        </java>
+    </target>
+
+</project>
